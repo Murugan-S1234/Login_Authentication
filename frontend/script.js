@@ -11,6 +11,8 @@ const firebaseConfig = {
   appId: "1:740798529706:web:36dd6b42ccc561b28fd0d3"
 };
 
+const API_URl="https://login-authentication-6un2.onrender.com";
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -45,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const res = await fetch('http://localhost:5000/auth/register', {
+      const res = await fetch(`${API_URl}/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ emailOrPhone, password }),
@@ -66,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
       }
     } else {
-      const res = await fetch('http://localhost:5000/auth/login', {
+      const res = await fetch(`${API_URl}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ emailOrPhone, password }),
@@ -100,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function saveUserToDatabase(email, firebaseUid) {
-    fetch("http://localhost:5000/auth/saveUser", {
+    fetch(`${API_URl}/auth/saveUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
