@@ -22,10 +22,16 @@ app.use((req, res, next) => {
   next();
 });
 
-// Middleware
-app.use(cors({
-  origin: 'https://login-authentication-1-uqyn.onrender.com', // Allow requests from your frontend
-}));
+
+const corsOptions = {
+  origin: 'https://login-authentication-1-uqyn.onrender.com', // Replace with your frontend URL
+  methods: 'GET,POST,PUT,DELETE',
+  allowedHeaders: 'Content-Type,Authorization',
+};
+
+app.use(cors(corsOptions));
+
+
 app.use(bodyParser.json());
 
 // MongoDB connection
