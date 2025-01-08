@@ -24,9 +24,7 @@ app.use((req, res, next) => {
 
 // Middleware
 app.use(cors({
-  origin: 'http://127.0.0.1:5500',  // Frontend URL, update if needed
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type', 'Authorization'],  // If you have custom headers
+  origin: 'https://login-authentication-1-uqyn.onrender.com', // Allow requests from your frontend
 }));
 app.use(bodyParser.json());
 
