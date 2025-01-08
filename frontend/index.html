@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Authentication</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Use Firebase as modules for compatibility with ES6 imports -->
+  <script type="module" src="https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js"></script>
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+  <div id="container">
+    <h2 id="heading">Glad to see you back !</h2>
+    <div id="phone_email">
+      <input id="phone" type="text" placeholder="Enter phone number or Email ID">
+      <input id="pass" type="password" placeholder="Enter your password">
+      <input id="confirmpass" type="password" placeholder="Confirm your password" style="display: none;">
+      <button id="login">Login</button>
+      <h4 id="message"></h4>
+      <h3 id="hyperlink">Create an account?</h3>
+    </div>
+    <hr id="line">
+    <div id="google">
+      <button id="google-signin">
+        <img src="google.png" alt="">Sign up with Google
+      </button>
+    </div>
+  </div>
+</body>
+</html>

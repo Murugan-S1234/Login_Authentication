@@ -1,0 +1,80 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container{
+    display: flex;
+    height: fit-content;
+    width: fit-content;
+    padding: 30px;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    border: 1px solid rgb(163, 157, 157);
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px 5px rgba(0, 0, 0, 0.3);
+}
+
+#phone_email{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#phone_email input{
+    padding: 5px;
+}
+
+#phone_email button{
+    padding: 7px;
+    background-color: greenyellow;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+h3{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: blue;
+    cursor: pointer;
+}
+
+hr {
+    width: 100%;
+    margin: 10px auto;
+    border: 0.5px solid rgb(126, 118, 118);
+}
+
+
+#google{
+    display: flex;
+    justify-content: center;
+}
+
+#google button{
+    padding: 2px;
+    height: 30px;
+    width: 200px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(241, 245, 248);
+    border: 1px solid black;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#google img{
+    height: 100%;
+    width: auto;
+}
