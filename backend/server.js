@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 
 
 const corsOptions = {
-  origin: 'https://login-authentication-1-uqyn.onrender.com', // Your live frontend URL
+  origin: 'https://login-authentication-1-uqyn.onrender.com',
   methods: ['POST'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
@@ -37,13 +37,10 @@ app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 
-// MongoDB connection
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-
-// Routes
 app.use('/auth', authRoutes);
 
 

@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await res.json();
       displayError(data.message || data.error);
       if (res.ok) {
-        // Clear the form fields after successful registration
         phoneEmail.value = '';
         pass.value = '';
         confirmpass.value = '';
@@ -76,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await res.json();
       displayError(data.message || data.error);
       if (res.ok) {
-        // Clear the form fields after successful login
         phoneEmail.value = '';
         pass.value = '';
         window.location.href = "https://murugan-s1234.github.io/Fish_e-commerce/";
@@ -94,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Success");
         const user = result.user;
         console.log("User signed in:", user);
-        saveUserToDatabase(user.email, user.uid); // Pass the Firebase UID
+        saveUserToDatabase(user.email, user.uid); 
       })
       .catch((error) => {
         displayError(error.message);
@@ -124,8 +122,16 @@ document.addEventListener('DOMContentLoaded', () => {
 function displayError(message) {
   const errorMessageElement = document.getElementById('message')
   errorMessageElement.textContent = message;
-  errorMessageElement.style.color = "red";
+  if(message=="User registered successfully"||message=="Login successful"||message=="User created and saved successfully"){
+    errorMessageElement.style.color = "green";
+  }else{
+    errorMessageElement.style.color = "red";
+  }
   errorMessageElement.style.fontSize = "12px";
   errorMessageElement.style.marginTop = "5px";
 
+
+  setTimeout(() => {
+    errorMessageElement.textContent = '';
+  }, 10000);
 }

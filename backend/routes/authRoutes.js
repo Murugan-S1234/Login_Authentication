@@ -5,17 +5,15 @@ const User = require('../models/User');
 const router = express.Router();
 require('dotenv').config();
 
-// Register new user (email/password)
+// Register 
 router.post('/register', async (req, res) => {
   const { emailOrPhone, password } = req.body;
   if (!emailOrPhone || !password) return res.status(400).json({ error: 'Fields missing' });
 
   try {
-    // Check if user already exists
     const existingUser = await User.findOne({ emailOrPhone });
     if (existingUser) return res.status(400).json({ error: 'User already exists' });
 
-    // Hash password before saving
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({ emailOrPhone, password: hashedPassword, authType: 'email' });
     await newUser.save();
@@ -26,7 +24,7 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// Login user (email/password)
+// Login user 
 router.post('/login', async (req, res) => {
   const { emailOrPhone, password } = req.body;
 
@@ -44,31 +42,27 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Google login or save new user from Google Firebase
+// Google login 
 router.post("/saveUser", async (req, res) => {
   const { email, firebaseUid } = req.body;
 
   if (!email || !firebaseUid) return res.status(400).json({ error: 'Missing email or Firebase UID' });
 
   try {
-    // Check if user already exists based on email
     let user = await User.findOne({ emailOrPhone: email });
-
+     // Create new user for Google login
     if (!user) {
-      // Create new user for Google login
       user = new User({
         emailOrPhone: email,
-        firebaseUid: firebaseUid,  // Store Firebase UID for Google users
-        authType: 'google'         // Set auth type to 'google'
+        firebaseUid: firebaseUid,  
+        authType: 'google'         
       });
       await user.save();
       return res.status(201).json({ message: "User created and saved successfully" });
     } else {
-      // If user already exists, check if Firebase UID is saved
       if (!user.firebaseUid) {
-        // If Firebase UID is not present, update it
         user.firebaseUid = firebaseUid;
-        user.authType = 'google';  // Set auth type to google if not already
+        user.authType = 'google';
         await user.save();
       }
       return res.status(200).json({ message: "User already exists" });
