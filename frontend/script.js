@@ -34,11 +34,39 @@ document.addEventListener('DOMContentLoaded', () => {
     confirmpass.style.display = 'block';
     hr.style.display="none";
     google.style.display='none'
+    
   });
 
   loginBtn.addEventListener('click', async () => {
     const emailOrPhone = phoneEmail.value;
     const password = pass.value;
+
+    function isEmail(input) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(input);
+    }
+    
+    function isPhoneNumber(input) {
+      const phoneRegex = /^[0-9]{10}$/; // Adjust this regex for your region
+      return phoneRegex.test(input);
+    }
+    
+      if (!emailOrPhone || !password) {
+        displayError('Both fields are required.');
+        return;
+      }
+    
+      let loginType = '';
+      if (isEmail(emailOrPhone)) {
+        loginType = 'email';
+      } else if (isPhoneNumber(emailOrPhone)) {
+        loginType = 'phone';
+      } else {
+        displayError('Invalid email or phone number.');
+        return;
+      }
+       
+    
 
     if (loginBtn.textContent === 'Register') {
       const confirmPassword = confirmpass.value;
@@ -133,5 +161,5 @@ function displayError(message) {
 
   setTimeout(() => {
     errorMessageElement.textContent = '';
-  }, 10000);
+  }, 5000);
 }
