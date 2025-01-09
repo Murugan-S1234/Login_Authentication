@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         saveUserToDatabase(user.email, user.uid); // Pass the Firebase UID
       })
       .catch((error) => {
-        displayError(error.massage);
+        displayError(error.message);
       });
   });
 
