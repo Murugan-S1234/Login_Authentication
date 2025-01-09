@@ -114,10 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const googleButton = document.querySelector("#google button");
 
   googleButton.addEventListener("click", () => {
-    console.log("Started sign-in");
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log("Success");
         const user = result.user;
         console.log("User signed in:", user);
         saveUserToDatabase(user.email, user.uid); 
@@ -138,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .then((response) => response.json())
       .then((data) => {
         console.log("User saved:", data);
-        displayError("User saved successfully");
+        displayError("Login successful ..!");
         window.location.href = "https://murugan-s1234.github.io/Fish_e-commerce/";
       })
       .catch((error) => {
@@ -150,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function displayError(message) {
   const errorMessageElement = document.getElementById('message')
   errorMessageElement.textContent = message;
-  if(message=="User registered successfully"||message=="Login successful"||message=="User created and saved successfully"){
+  if(message=="User registered successfully"||message=="Login successful ..!"){
     errorMessageElement.style.color = "green";
   }else{
     errorMessageElement.style.color = "red";

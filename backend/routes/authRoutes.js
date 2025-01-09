@@ -58,7 +58,7 @@ router.post("/saveUser", async (req, res) => {
         authType: 'google'         
       });
       await user.save();
-      return res.status(201).json({ message: "User created and saved successfully" });
+      return res.status(201).json({ message: "Login successful ..!" });
     } else {
       if (!user.firebaseUid) {
         user.firebaseUid = firebaseUid;
