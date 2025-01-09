@@ -24,9 +24,10 @@ app.use((req, res, next) => {
 
 
 const corsOptions = {
-  origin: 'https://login-authentication-1-uqyn.onrender.com', // Replace with your frontend URL
-  methods: 'GET,POST,PUT,DELETE',
-  allowedHeaders: 'Content-Type,Authorization',
+  origin: 'https://login-authentication-1-uqyn.onrender.com', // Frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+  credentials: true, // Allow cookies or credentials
 };
 
 app.use(cors(corsOptions));
